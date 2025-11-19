@@ -1,103 +1,106 @@
-# Air Cargo Pickup Planner (Google Sheets + Apps Script)
+Air Cargo Pickup Planner (Google Sheets + Apps Script)
 
-A lightweight automation tool built with **Google Sheets + Apps Script** that streamlines daily air cargo pickup planning.  
-It aggregates AWB data across multiple vendors, detects ready-for-pickup shipments, and generates dashboards grouped by **warehouse** and **region clusters**.
+A lightweight automation tool built with Google Sheets + Apps Script that streamlines daily air cargo pickup planning. It aggregates AWB data across multiple vendors, detects ready-for-pickup shipments, and generates dashboards grouped by warehouse and region clusters.
 
----
+🚀 Project Overview
 
-## 🚀 Project Overview
-
-In many freight forwarding operations, warehouse staff manually review multiple Excel/Sheets files from different vendors to determine which shipments (AWBs) are ready for pickup at airport cargo terminals.  
-This tool automates that workflow.
+In many freight forwarding operations, warehouse staff manually review multiple Excel/Sheets files from different vendors to determine which shipments (AWBs) are ready for pickup at airport cargo terminals. This tool automates that workflow.
 
 I designed a unified AWB tracking format based on the company’s existing habits and implemented Google Apps Script functions to:
 
-- Read and process data across **multiple vendor sheets** (e.g., MCF, ZJZhuoHang, Sunlink, Xingkong)
-- Detect “ready for pickup” shipments based on **highlighted yellow rows**
-- Map AWB prefixes to the correct **warehouse** and **region cluster (A/B/C/D)**
-- Aggregate shipment data (shipments, pieces, weight, volume)
-- Generate three summary views:
-  - **Cluster & warehouse dashboard**
-  - **Company-level breakdown**
-  - **AWB-level pickup detail list**
+Read and process data across multiple vendor sheets (e.g., MCF, ZJZhuoHang, Sunlink, Xingkong)
+
+Detect “ready for pickup” shipments based on highlighted yellow rows
+
+Map AWB prefixes to the correct warehouse and region cluster (A/B/C/D)
+
+Aggregate shipment data (shipments, pieces, weight, volume)
+
+Generate three summary views:
+
+Cluster & warehouse dashboard
+
+Company-level breakdown
+
+AWB-level pickup detail list
 
 This automation significantly reduces manual sorting time and improves daily pickup planning efficiency.
 
----
+🧩 Features
 
-## 🧩 Features
+Multi-sheet AWB parsing
 
-- Multi-sheet AWB parsing  
-- Prefix → warehouse & cluster mapping  
-- Region-based clustering (A / B / C / D)  
-- Aggregated dashboards for dispatch planning  
-- Detailed AWB-level pickup lists  
+Prefix → warehouse & cluster mapping
 
----
+Region-based clustering (A / B / C / D)
 
-## 🏗 Tech Stack
+Aggregated dashboards for dispatch planning
 
-- Google Sheets  
-- Google Apps Script (JavaScript)  
-- Spreadsheet data modeling & workflow automation  
+Detailed AWB-level pickup lists
 
----
+🏗 Tech Stack
 
-## 📂 Repository Structure
+Google Sheets
 
-```text
-scripts/                 Apps Script source code
-template/                AWB tracking template or documentation
-images/                  Dashboard & output examples
-README.md                Project documentation
+Google Apps Script (JavaScript)
 
----
+Spreadsheet data modeling & workflow automation
 
-## 🛠 Setup & Usage
+📂 Repository Structure
 
-1. **Prepare your tracking sheet**
-   - Create a Google Sheet with one tab per vendor (e.g., `MCF`, `ZJZhuoHang`, `Sunlink`, `xingkong`).
-   - Ensure each sheet shares a similar column layout (prefix, AWB, pieces, weight, volume, etc.).
-   - Use a specific yellow highlight (e.g., `#ffe599`) to mark rows that are **ready for pickup today**.
+scripts/ Apps Script source code
+template/ AWB tracking template or documentation
+images/ Dashboard & output examples
+README.md Project documentation
 
-2. **Open Apps Script**
-   - In the Google Sheet, go to:  
-     **Extensions → Apps Script**
-   - Create a new script file (or replace the default `Code.gs` content).
+🛠 Setup & Usage
 
-3. **Copy the script code**
-   - Copy the full content from:  
-     [`scripts/PickupDashboard.js`](scripts/PickupDashboard.js)
-   - Paste it into the Apps Script editor.
+Prepare your tracking sheet
 
-4. **Adjust configuration**
-   - Update the configuration section if needed:
-     - `COMPANY_SHEETS` → your actual sheet tab names  
-     - `DATA_START_ROW`, `DATA_END_ROW` → your data range  
-     - `DATA_START_COL`, `DATA_END_COL` → your highlighted column range  
-     - `COL_PREFIX`, `COL_AWB`, `COL_PIECES`, `COL_WEIGHT`, `COL_VOLUME` → your column indexes  
-     - `PREFIX_MAP` → your **prefix → warehouse / cluster** mapping
+Create a Google Sheet with one tab per vendor.
 
-5. **Run the functions**
-   - In the Apps Script editor, select and run:
-     - `PickupDashboard()` → generates cluster & warehouse summary  
-     - `PickupCompanyBreakdown()` → company + cluster + warehouse summary  
-     - `PickupCompanyAwbDetail()` → AWB-level breakdown  
-   - For practical use, you may enhance these functions to automatically write output to dedicated sheets.
+Ensure all tabs share the same column layout.
 
-6. **Optional: Add a custom menu or buttons**
-   - Implement an `onOpen()` function in Apps Script to add menu items:
-     - e.g., `Pickup Dashboard`, `Breakdown`, `AWB Detail`
-   - Or assign the functions to buttons inside Google Sheets for daily operations.
+Highlight rows with the color #ffe599 to mark shipments ready for pickup today.
 
----
+Open Apps Script
 
-## 👤 Author
+Go to Extensions → Apps Script
 
-**Hongyu Xiang**  
-Software Engineer / SRE  
-Boston, MA  
+Replace the default code with the script from scripts/PickupDashboard.js
 
-- GitHub: https://github.com/YOUR_USERNAME  
-- LinkedIn: https://www.linkedin.com/in/hongyu-xiang-a5a463117/  
-- Portfolio: (add your Wix site link once it’s ready)
+Adjust configuration
+
+Update COMPANY_SHEETS to match your tab names
+
+Confirm column indexes (prefix, AWB, pieces, weight, volume)
+
+Update PREFIX_MAP to match your warehouse + cluster logic
+
+Run the functions
+
+PickupDashboard() → warehouse & cluster dashboard
+
+PickupCompanyBreakdown() → vendor-level breakdown
+
+PickupCompanyAwbDetail() → AWB-level listing
+
+(Optional) Add a custom menu or trigger
+
+You may create an onOpen() menu for one-click execution
+
+Or bind functions to UI buttons in Google Sheets
+
+👤 Author
+
+Hongyu Xiang
+Software Engineer / SRE
+Boston, MA
+
+GitHub: https://github.com/YOUR_USERNAME
+
+LinkedIn: https://www.linkedin.com/in/hongyu-xiang-a5a463117/
+
+Portfolio: (add when ready)
+
+✔️ 这就是最完整、最干净、最适合直接粘贴的版本
