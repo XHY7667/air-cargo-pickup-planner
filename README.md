@@ -50,3 +50,54 @@ scripts/                 Apps Script source code
 template/                AWB tracking template or documentation
 images/                  Dashboard & output examples
 README.md                Project documentation
+
+---
+
+## 🛠 Setup & Usage
+
+1. **Prepare your tracking sheet**
+   - Create a Google Sheet with one tab per vendor (e.g., `MCF`, `ZJZhuoHang`, `Sunlink`, `xingkong`).
+   - Ensure each sheet shares a similar column layout (prefix, AWB, pieces, weight, volume, etc.).
+   - Use a specific yellow highlight (e.g., `#ffe599`) to mark rows that are **ready for pickup today**.
+
+2. **Open Apps Script**
+   - In the Google Sheet, go to:  
+     **Extensions → Apps Script**
+   - Create a new script file (or replace the default `Code.gs` content).
+
+3. **Copy the script code**
+   - Copy the full content from:  
+     [`scripts/PickupDashboard.js`](scripts/PickupDashboard.js)
+   - Paste it into the Apps Script editor.
+
+4. **Adjust configuration**
+   - Update the configuration section if needed:
+     - `COMPANY_SHEETS` → your actual sheet tab names  
+     - `DATA_START_ROW`, `DATA_END_ROW` → your data range  
+     - `DATA_START_COL`, `DATA_END_COL` → your highlighted column range  
+     - `COL_PREFIX`, `COL_AWB`, `COL_PIECES`, `COL_WEIGHT`, `COL_VOLUME` → your column indexes  
+     - `PREFIX_MAP` → your **prefix → warehouse / cluster** mapping
+
+5. **Run the functions**
+   - In the Apps Script editor, select and run:
+     - `PickupDashboard()` → generates cluster & warehouse summary  
+     - `PickupCompanyBreakdown()` → company + cluster + warehouse summary  
+     - `PickupCompanyAwbDetail()` → AWB-level breakdown  
+   - For practical use, you may enhance these functions to automatically write output to dedicated sheets.
+
+6. **Optional: Add a custom menu or buttons**
+   - Implement an `onOpen()` function in Apps Script to add menu items:
+     - e.g., `Pickup Dashboard`, `Breakdown`, `AWB Detail`
+   - Or assign the functions to buttons inside Google Sheets for daily operations.
+
+---
+
+## 👤 Author
+
+**Hongyu Xiang**  
+Software Engineer / SRE  
+Boston, MA  
+
+- GitHub: https://github.com/YOUR_USERNAME  
+- LinkedIn: https://www.linkedin.com/in/hongyu-xiang-a5a463117/  
+- Portfolio: (add your Wix site link once it’s ready)
